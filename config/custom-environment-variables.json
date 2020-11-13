@@ -3,5 +3,7 @@
         "username": "mongoUsername",
         "password": "mongoPassword"
     },
-    "jwtPrivateKey": "jwtPrivateKey"
+    "jwtPrivateKey": "jwtPrivateKey",
+    "sessionSecret": "onlineShopSessionSecret",
+    "sendGridKey": "sendGridApiKey13112020"
 }

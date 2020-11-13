@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 const config = require("config");
 const logger = require("winston");
-module.exports = async function (app) {
-    const username = config.get("db.username");
-    const password = config.get("db.password");
-    const dbName = config.get("dbName");
-    const mongoUri =  `mongodb+srv://${username}:${password}@cluster0.vcyez.gcp.mongodb.net/${dbName}?retryWrites=true&w=majority`
+const username = config.get("db.username");
+const password = config.get("db.password");
+const dbName = config.get("dbName");
+const mongoUri = `mongodb+srv://${username}:${password}@cluster0.vcyez.gcp.mongodb.net/${dbName}?retryWrites=true&w=majority`
+
+async function configureDB() {
     try {
         await mongoose.connect(mongoUri, {
             useNewUrlParser: true,
@@ -21,3 +22,6 @@ module.exports = async function (app) {
         process.exit(1);
     }
 }
+
+module.exports.configureDB = configureDB;
+module.exports.mongoUri = mongoUri;
